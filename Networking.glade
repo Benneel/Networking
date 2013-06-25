@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy project-wide -->
+  <object class="GtkWindow" id="ModeWindow">
+    <property name="can_focus">True</property>
+    <property name="has_focus">True</property>
+    <property name="is_focus">True</property>
+    <property name="border_width">10</property>
+    <property name="title" translatable="yes">Networking</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="window_position">center</property>
+    <property name="decorated">False</property>
+    <property name="deletable">False</property>
+    <property name="ubuntu_no_proxy">True</property>
+    <child>
+      <object class="GtkFixed" id="ModeFixed">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkLabel" id="ModeStart">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Select on of the following to start...     Or</property>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ModeServer">
+            <property name="label" translatable="yes">Start New _Server</property>
+            <property name="width_request">130</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="can_default">True</property>
+            <property name="has_default">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="ConfigureAsServer"/>
+          </object>
+          <packing>
+            <property name="x">50</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ModeClient">
+            <property name="label" translatable="yes">Login As _Client</property>
+            <property name="width_request">130</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="ConfigureAsClient"/>
+          </object>
+          <packing>
+            <property name="x">200</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ModeQuit">
+            <property name="label">gtk-quit</property>
+            <property name="width_request">41</property>
+            <property name="height_request">29</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="relief">none</property>
+            <property name="use_stock">True</property>
+            <signal name="clicked" handler="print_hello"/>
+          </object>
+          <packing>
+            <property name="x">307</property>
+            <property name="y">43</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="AboutShow">
+            <property name="label" translatable="yes">_About Application</property>
+            <property name="width_request">150</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="relief">none</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="gtk_widget_show" object="About"/>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">200</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="ModeDetails">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Welcome to Client/Server application project</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+              <attribute name="underline" value="True"/>
+              <attribute name="gravity" value="north"/>
+              <attribute name="size" value="13000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">10</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="TypeServerWindow">
+    <property name="border_width">10</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center-on-parent</property>
+    <signal name="delete_event" handler="ConfigureServerCancel"/>
+    <child>
+      <object class="GtkFixed" id="TypeServerFixed">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkLabel" id="TypeServerL1">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Server Configuration</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+              <attribute name="underline" value="True"/>
+              <attribute name="size" value="13000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">10</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="TypeServerF1">
+            <property name="width_request">150</property>
+            <property name="height_request">100</property>
+            <property name="visible">True</property>
+            <property name="border_width">5</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="TypeServerA1">
+                <property name="visible">True</property>
+                <property name="top_padding">7</property>
+                <property name="bottom_padding">7</property>
+                <property name="left_padding">12</property>
+                <property name="right_padding">7</property>
+                <child>
+                  <object class="GtkVBox" id="TypeServerV1">
+                    <property name="visible">True</property>
+                    <property name="spacing">5</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeServerTCP">
+                        <property name="label" translatable="yes">_TCP Protocol</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeServerUDP">
+                        <property name="label" translatable="yes">_UDP Protocol</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">TypeServerTCP</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="TypeServerL2">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Connection Type&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="TypeServerF2">
+            <property name="width_request">230</property>
+            <property name="height_request">100</property>
+            <property name="visible">True</property>
+            <property name="border_width">5</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="TypeServerA2">
+                <property name="visible">True</property>
+                <property name="top_padding">7</property>
+                <property name="bottom_padding">7</property>
+                <property name="left_padding">12</property>
+                <property name="right_padding">7</property>
+                <child>
+                  <object class="GtkVBox" id="TypeServerV2">
+                    <property name="visible">True</property>
+                    <property name="spacing">5</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkHBox" id="TypeServerH1">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="TypeServerL4">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">IP:		</property>
+                          </object>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="TypeServerIP">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="max_length">39</property>
+                            <property name="invisible_char">•</property>
+                            <property name="text" translatable="yes">0.0.0.0</property>
+                            <property name="xalign">0.5</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkHBox" id="TypeServerH2">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="TypeServerL5">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">Port:	</property>
+                          </object>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="TypeServerPort">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="max_length">5</property>
+                            <property name="invisible_char">•</property>
+                            <property name="text" translatable="yes">3000</property>
+                            <property name="xalign">0.5</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="TypeServerL3">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Connection Details&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">190</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator1">
+            <property name="width_request">420</property>
+            <property name="height_request">15</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">15</property>
+            <property name="y">155</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="TypeServerNonBlock">
+            <property name="label" translatable="yes">Use Non-_Blocking Mode</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_underline">True</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">185</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="TypeServerF3">
+            <property name="width_request">150</property>
+            <property name="height_request">100</property>
+            <property name="visible">True</property>
+            <property name="border_width">5</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="TypeServerA3">
+                <property name="visible">True</property>
+                <property name="top_padding">7</property>
+                <property name="bottom_padding">7</property>
+                <property name="left_padding">12</property>
+                <property name="right_padding">7</property>
+                <child>
+                  <object class="GtkVBox" id="TypeServerV3">
+                    <property name="visible">True</property>
+                    <property name="spacing">5</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeServerIPv4">
+                        <property name="label" translatable="yes">IP Version _4</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeServerIPv6">
+                        <property name="label" translatable="yes">IP Version _6</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">TypeServerIPv4</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeServerAuto">
+                        <property name="label" translatable="yes">Automatic</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">TypeServerIPv6</property>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="TypeServerL6">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;IP Version&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">270</property>
+            <property name="y">165</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator2">
+            <property name="width_request">420</property>
+            <property name="height_request">15</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">15</property>
+            <property name="y">270</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="TypeServerL7">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Login Password:</property>
+          </object>
+          <packing>
+            <property name="x">25</property>
+            <property name="y">295</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="TypeServerPassword">
+            <property name="width_request">160</property>
+            <property name="height_request">27</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_length">15</property>
+            <property name="visibility">False</property>
+            <property name="invisible_char">•</property>
+            <property name="text" translatable="yes">1</property>
+            <property name="xalign">0.5</property>
+          </object>
+          <packing>
+            <property name="x">143</property>
+            <property name="y">290</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="TypeServerCancel">
+            <property name="label" translatable="yes">_Cancel</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="ConfigureServerCancel"/>
+          </object>
+          <packing>
+            <property name="x">200</property>
+            <property name="y">330</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="TypeServerConfigure">
+            <property name="label" translatable="yes">Confi_gure</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="can_default">True</property>
+            <property name="has_default">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="ConfigureServer"/>
+          </object>
+          <packing>
+            <property name="x">310</property>
+            <property name="y">330</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBox" id="TypeServerEncryption">
+            <property name="width_request">185</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="editing_canceled">True</property>
+            <property name="model">EncryptionData</property>
+            <property name="active">0</property>
+            <child>
+              <object class="GtkCellRendererText" id="TypeServerEncryptionCell"/>
+              <attributes>
+                <attribute name="text">0</attribute>
+              </attributes>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">230</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="TypeClientWindow">
+    <property name="border_width">10</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center-on-parent</property>
+    <signal name="delete_event" handler="ConfigureClientCancel"/>
+    <child>
+      <object class="GtkFixed" id="TypeClientFixed">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkLabel" id="TypeClientL1">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Client Configuration</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+              <attribute name="underline" value="True"/>
+              <attribute name="size" value="13000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">10</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="TypeClientF1">
+            <property name="width_request">150</property>
+            <property name="height_request">100</property>
+            <property name="visible">True</property>
+            <property name="border_width">5</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="TypeClientA1">
+                <property name="visible">True</property>
+                <property name="top_padding">7</property>
+                <property name="bottom_padding">7</property>
+                <property name="left_padding">12</property>
+                <property name="right_padding">7</property>
+                <child>
+                  <object class="GtkVBox" id="TypeClientV1">
+                    <property name="visible">True</property>
+                    <property name="spacing">5</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeClientTCP">
+                        <property name="label" translatable="yes">_TCP Protocol</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeClientUDP">
+                        <property name="label" translatable="yes">_UDP Protocol</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">TypeClientTCP</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="TypeClientL2">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Connection Type&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="TypeClientF2">
+            <property name="width_request">230</property>
+            <property name="height_request">100</property>
+            <property name="visible">True</property>
+            <property name="border_width">5</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="TypeClientA2">
+                <property name="visible">True</property>
+                <property name="top_padding">7</property>
+                <property name="bottom_padding">7</property>
+                <property name="left_padding">12</property>
+                <property name="right_padding">7</property>
+                <child>
+                  <object class="GtkVBox" id="TypeClientV2">
+                    <property name="visible">True</property>
+                    <property name="spacing">5</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkHBox" id="TypeClientH1">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="TypeClientL4">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">IP:		</property>
+                          </object>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="TypeClientIP">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="max_length">39</property>
+                            <property name="invisible_char">•</property>
+                            <property name="text" translatable="yes">benneel</property>
+                            <property name="xalign">0.5</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkHBox" id="TypeClientH2">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="TypeClientL5">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Port:	</property>
+                          </object>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="TypeClientPort">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="max_length">5</property>
+                            <property name="invisible_char">•</property>
+                            <property name="text" translatable="yes">3000</property>
+                            <property name="xalign">0.5</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="TypeClientL3">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Connection Details&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">190</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator3">
+            <property name="width_request">420</property>
+            <property name="height_request">15</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">15</property>
+            <property name="y">155</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="TypeClientNonBlock">
+            <property name="label" translatable="yes">Use Non-_Blocking Mode</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_underline">True</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">185</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="TypeClientF3">
+            <property name="width_request">150</property>
+            <property name="height_request">100</property>
+            <property name="visible">True</property>
+            <property name="border_width">5</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="TypeClientA3">
+                <property name="visible">True</property>
+                <property name="top_padding">7</property>
+                <property name="bottom_padding">7</property>
+                <property name="left_padding">12</property>
+                <property name="right_padding">7</property>
+                <child>
+                  <object class="GtkVBox" id="TypeClientV3">
+                    <property name="visible">True</property>
+                    <property name="spacing">5</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeClientIPv4">
+                        <property name="label" translatable="yes">IP Version _4</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeClientIPv6">
+                        <property name="label" translatable="yes">IP Version _6</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">TypeClientIPv4</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="TypeClientAuto">
+                        <property name="label" translatable="yes">Automatic</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">TypeClientIPv6</property>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="TypeClientL6">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;IP Version&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">270</property>
+            <property name="y">165</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator4">
+            <property name="width_request">420</property>
+            <property name="height_request">15</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">15</property>
+            <property name="y">270</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="TypeClientF4">
+            <property name="width_request">340</property>
+            <property name="height_request">130</property>
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="TypeClientA4">
+                <property name="visible">True</property>
+                <property name="top_padding">7</property>
+                <property name="left_padding">12</property>
+                <property name="right_padding">7</property>
+                <child>
+                  <object class="GtkVBox" id="TypeClientV4">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkHBox" id="TypeClientH3">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="TypeClientL8">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">User Name:	</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="TypeClientUserName">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="max_length">20</property>
+                            <property name="invisible_char">•</property>
+                            <property name="text" translatable="yes">LocalHost</property>
+                            <property name="xalign">0.5</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkHBox" id="TypeClientH4">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="TypeClientL9">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Password:	</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="TypeClientPassword">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="max_length">15</property>
+                            <property name="visibility">False</property>
+                            <property name="invisible_char">•</property>
+                            <property name="text" translatable="yes">1</property>
+                            <property name="xalign">0.5</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkHBox" id="TypeClientH5">
+                        <property name="visible">True</property>
+                        <property name="border_width">5</property>
+                        <property name="spacing">10</property>
+                        <property name="homogeneous">True</property>
+                        <child>
+                          <object class="GtkButton" id="TypeClientCancel">
+                            <property name="label" translatable="yes">_Cancel</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_underline">True</property>
+                            <signal name="clicked" handler="ConfigureClientCancel"/>
+                          </object>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="TypeClientConfigure">
+                            <property name="label" translatable="yes">Confi_gure</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="can_default">True</property>
+                            <property name="has_default">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_underline">True</property>
+                            <signal name="clicked" handler="ConfigureClient"/>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="TypeClientL7">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Login&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">45</property>
+            <property name="y">280</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBox" id="TypeClientEncryption">
+            <property name="width_request">185</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="editing_canceled">True</property>
+            <property name="model">EncryptionData</property>
+            <property name="active">0</property>
+            <child>
+              <object class="GtkCellRendererText" id="TypeClientEncryptionCell"/>
+              <attributes>
+                <attribute name="text">0</attribute>
+              </attributes>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">230</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="ServerWindow">
+    <property name="border_width">10</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <signal name="delete_event" handler="print_hello"/>
+    <child>
+      <object class="GtkFixed" id="ServerFixed">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkFrame" id="ServerF1">
+            <property name="width_request">580</property>
+            <property name="height_request">490</property>
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="ServerA1">
+                <property name="visible">True</property>
+                <property name="border_width">5</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkScrolledWindow" id="ServerScroll">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="shadow_type">etched-out</property>
+                    <child>
+                      <object class="GtkTextView" id="ServerTextView">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="has_focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="wrap_mode">word-char</property>
+                        <property name="buffer">ServerTextBuffer</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="ServerL1">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Server Log&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="ServerF2">
+            <property name="width_request">150</property>
+            <property name="height_request">490</property>
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="ServerA2">
+                <property name="visible">True</property>
+                <property name="border_width">5</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkVBox" id="ServerV">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC1">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC2">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC3">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC4">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC5">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC6">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC7">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC8">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">7</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC9">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">8</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ServerC10">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">9</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="ServerL2">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Connections&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">600</property>
+            <property name="y">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ServerRun">
+            <property name="label" translatable="yes">_Run Server</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="RunServer"/>
+          </object>
+          <packing>
+            <property name="x">40</property>
+            <property name="y">505</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ServerStop">
+            <property name="label" translatable="yes">_Stop Server</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="StopServer"/>
+          </object>
+          <packing>
+            <property name="x">160</property>
+            <property name="y">505</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ServerDisconnect">
+            <property name="label" translatable="yes">_Disconnect</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="DisconnectClients"/>
+          </object>
+          <packing>
+            <property name="x">635</property>
+            <property name="y">505</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ServerSave">
+            <property name="label" translatable="yes">Save _Log</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="SaveLog"/>
+          </object>
+          <packing>
+            <property name="x">40</property>
+            <property name="y">575</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ServerPreferences">
+            <property name="label" translatable="yes">_Preferences</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="ServerPreferences"/>
+          </object>
+          <packing>
+            <property name="x">160</property>
+            <property name="y">575</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ServerExit">
+            <property name="label" translatable="yes">E_xit</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="print_hello"/>
+          </object>
+          <packing>
+            <property name="x">635</property>
+            <property name="y">575</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator6">
+            <property name="width_request">715</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">555</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="ClientWindow">
+    <property name="border_width">10</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <signal name="show" handler="RunClient"/>
+    <signal name="delete_event" handler="print_hello"/>
+    <child>
+      <object class="GtkFixed" id="ClientFixed">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkFrame" id="ClientF1">
+            <property name="width_request">480</property>
+            <property name="height_request">390</property>
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="ClientA1">
+                <property name="visible">True</property>
+                <property name="border_width">5</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkScrolledWindow" id="ClientScroll">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="shadow_type">etched-out</property>
+                    <child>
+                      <object class="GtkTextView" id="ClientTextView">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="wrap_mode">word-char</property>
+                        <property name="buffer">ClientTextBuffer</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="ClientL1">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Message Board&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="ServerF4">
+            <property name="width_request">150</property>
+            <property name="height_request">390</property>
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="ServerA4">
+                <property name="visible">True</property>
+                <property name="border_width">5</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkVBox" id="ServerV1">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC1">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC2">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC3">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC4">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC5">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC6">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC7">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC8">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">7</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC9">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">8</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="ClientC10">
+                        <property name="label" translatable="yes">Available...</property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="position">9</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="ClientL2">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Users&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">500</property>
+            <property name="y">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="ClientF3">
+            <property name="width_request">400</property>
+            <property name="height_request">103</property>
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment" id="ClientA3">
+                <property name="visible">True</property>
+                <property name="top_padding">7</property>
+                <property name="bottom_padding">7</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkHBox" id="ClientH1">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkTextView" id="ClientSendText">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="has_focus">True</property>
+                        <property name="is_focus">True</property>
+                        <property name="wrap_mode">word-char</property>
+                        <property name="buffer">ClientSendBuffer</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="ClientSend">
+                        <property name="label" translatable="yes">     Send     </property>
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="can_default">True</property>
+                        <property name="has_default">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="border_width">10</property>
+                        <accelerator key="Return" signal="clicked"/>
+                        <signal name="clicked" handler="SendMessage"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="ClientL3">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Your Text Here...&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">405</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ClientExit">
+            <property name="label" translatable="yes">E_xit</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="print_hello"/>
+          </object>
+          <packing>
+            <property name="x">550</property>
+            <property name="y">461</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ClientPreferences">
+            <property name="label" translatable="yes">_Preferences</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_underline">True</property>
+            <signal name="clicked" handler="ClientPreferences"/>
+          </object>
+          <packing>
+            <property name="x">440</property>
+            <property name="y">460</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ClientRun">
+            <property name="label" translatable="yes">Run</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <signal name="clicked" handler="RunClient"/>
+          </object>
+          <packing>
+            <property name="x">440</property>
+            <property name="y">405</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="ClientDisconnect">
+            <property name="label" translatable="yes">Disconnect</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <signal name="clicked" handler="StopClient"/>
+          </object>
+          <packing>
+            <property name="x">550</property>
+            <property name="y">405</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkListStore" id="EncryptionData">
+    <columns>
+      <!-- column-name Type -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">No Encryption</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">AES</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">DES</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">RC4</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">BlowFish</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkTextBuffer" id="ServerTextBuffer"/>
+  <object class="GtkTextBuffer" id="ClientTextBuffer"/>
+  <object class="GtkTextBuffer" id="ClientSendBuffer">
+    <signal name="changed" handler="on_ClientSendBuffer_changed"/>
+  </object>
+  <object class="GtkTextTag" id="TextTags">
+    <property name="name">time</property>
+    <property name="background_gdk">#336733673367</property>
+    <property name="foreground_gdk">#e318e318e318</property>
+    <property name="font">Normal</property>
+    <property name="editable">False</property>
+    <property name="language">en-us</property>
+  </object>
+  <object class="GtkAboutDialog" id="About">
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Network Sockets</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="window_position">center</property>
+    <property name="type_hint">normal</property>
+    <property name="transient_for">ModeWindow</property>
+    <property name="opacity">0.75</property>
+    <property name="program_name">Networking</property>
+    <property name="version">1.0</property>
+    <property name="copyright" translatable="yes">Freeware</property>
+    <property name="comments" translatable="yes">Designing and implementing communication class via LinuxOS sockets in C++ PL.
+	In this project student must design and implement a class for network communications in a way that each object of this class should have this capabilities:
+	1) setting protocols in transport layer (TCP/UDP)
+	2) possible to work as Blocking or NonBlocking
+	3) apply security mechanisms in packets e.g. MD5...
+	4) Logging tranceive operations for debuging purposes</property>
+    <property name="website_label" translatable="yes">Beneil.Eisavi@yahoo.com</property>
+    <property name="license" translatable="yes">Under license of Beneil Eisavi ;)</property>
+    <property name="authors">Beneil Eisavi</property>
+    <property name="logo">Networking.png</property>
+    <signal name="response" handler="gtk_widget_hide" object="About"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox1">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
